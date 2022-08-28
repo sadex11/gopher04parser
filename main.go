@@ -1,9 +1,7 @@
-package main
+package linkparser
 
 import (
-	"fmt"
 	"io"
-	"os"
 	"strings"
 
 	"golang.org/x/net/html"
@@ -43,7 +41,7 @@ func iterateNode(node *html.Node, links *[]NodeLink) {
 	}
 }
 
-func getNodeLinks(reader io.Reader) *[]NodeLink {
+func GetNodeLinks(reader io.Reader) *[]NodeLink {
 	rootNode, err := html.Parse(reader)
 
 	if err != nil {
@@ -53,18 +51,4 @@ func getNodeLinks(reader io.Reader) *[]NodeLink {
 	var links *[]NodeLink = new([]NodeLink)
 	iterateNode(rootNode, links)
 	return links
-}
-
-func main() {
-	reader, err := os.Open("ex3.html")
-
-	if err != nil {
-		panic(err)
-	}
-
-	links := getNodeLinks(reader)
-
-	for _, link := range *links {
-		fmt.Println(link)
-	}
 }
