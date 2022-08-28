@@ -1,4 +1,4 @@
-package main
+package linkparser
 
 import (
 	"os"
@@ -48,7 +48,7 @@ func TestGetNodeLinks(t *testing.T) {
 		t.FailNow()
 	}
 
-	links := getNodeLinks(reader)
+	links := GetNodeLinks(reader)
 
 	if len(*links) != 2 {
 		t.Error("Invalid links lenght, expected 2, got", len(*links))
