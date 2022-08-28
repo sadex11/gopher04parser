@@ -1,4 +1,4 @@
-module gophercises/exercise04
+module github.com/sadex11/gopher04parser
 
 go 1.18
 
